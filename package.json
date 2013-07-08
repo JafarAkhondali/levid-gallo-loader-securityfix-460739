@@ -1,0 +1,19 @@
+{
+    "name": "gallo-loader",
+    "private": true,
+    "version": "0.0.0-1",
+    "description": "loader framework class",
+    "dependencies": {},
+    "scripts": {
+        "start": "node .scripts/web-server.js",
+        "debug": "node debug .node scripts/web-server.js"
+    },
+    "main": ".scripts/web-server.js",
+    "repository": "",
+    "author": "Isaac Wooten",
+    "license": "MIT",
+    "engines": {
+        "node": "0.10.x"
+    },
+    "subdomain": "gallo-loader"
+}
