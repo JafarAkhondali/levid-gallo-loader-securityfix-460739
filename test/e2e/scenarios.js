@@ -42,4 +42,18 @@ describe('my app', function() {
     });
 
   });
+
+  describe('intro', function() {
+
+    beforeEach(function() {
+      browser().navigateTo('#/intro');
+    });
+
+
+    it('should render intro when user navigates to /intro', function() {
+      expect(element('[ng-view] p:first').text()).
+        toMatch(/partial for intro/);
+    });
+
+  });
 });

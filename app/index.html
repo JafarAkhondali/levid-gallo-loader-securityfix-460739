@@ -4,25 +4,72 @@
   <meta charset="utf-8">
   <title>My AngularJS App</title>
   <link rel="stylesheet" href="css/app.css"/>
+
+  <style type="text/css">
+    #template {
+      display:none;
+    }
+
+    #mainProgress {
+      width: auto;
+      height: 20px;
+      float: none;
+      position: relative;
+    }
+    #mainProgress LABEL { position: absolute; }
+
+    .item {
+      height: 170px;
+      width: 238px;
+      border: 1px solid #eee;
+      background-color: #ddd;
+      padding: 2px;
+      float:left;
+      position: relative;
+      text-align: center;
+    }
+    .item .progress {
+      width: 0;
+      height: 20px;
+      background-color: #9c9;
+      bottom: 0;
+    }
+    .complete {}
+    .error {
+      background-color: #FAA;
+    }
+    .complete DIV, .error DIV { display: none; }
+  </style>
+
 </head>
 <body>
   <ul class="menu">
     <li><a href="#/view1">view1</a></li>
     <li><a href="#/view2">view2</a></li>
+    <li><a href="#/intro">intro</a></li>
   </ul>
 
-  <div ng-view></div>
-
   <div>Angular seed app: v<span app-version></span></div>
+
+  <div ng-view></div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
   -->
+  <script src="lib/jquery/jquery-1.9.1.min.js"></script>
   <script src="lib/angular/angular.js"></script>
+  <script src="lib/jquery.lazyload.min.js"></script>
+  <script src="lib/preloadjs/preloadjs-0.3.1.min.js"></script>
+  <script src="./assets/soundjs-NEXT.min.js"></script>
+
   <script src="js/app.js"></script>
   <script src="js/services.js"></script>
   <script src="js/controllers.js"></script>
   <script src="js/filters.js"></script>
   <script src="js/directives.js"></script>
+  <script src="js/gallo.js"></script>
+  <script src="js/galloEvents.js"></script>
+  <script src="js/galloLoader.js"></script>
+
 </body>
 </html>

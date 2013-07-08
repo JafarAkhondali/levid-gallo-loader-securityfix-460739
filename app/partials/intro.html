@@ -1,0 +1,117 @@
+<p>This is the partial for intro.</p>
+
+<div id="container" class="content">
+  <input type="button" id="loadAnotherBtn" value="Load Another" disabled="disabled" class="loadButton" />
+  <input type="button" id="loadSeveralBtn" value="Load Several" disabled="disabled" class="loadButton" />
+  <input type="button" id="loadAllBtn" value="Load All" disabled="disabled" class="loadButton" />
+  <input type="button" id="reloadBtn" value="Reset" class="reloadButton" />
+  <input type="checkbox" id="lazyLoad" value="lazyLoad" class="lazyButton" /> Lazy Load Images
+  <div id="mainProgress" class="item">
+    <label>
+      Progress:
+      <span class="progressText"></span>
+    </label>
+    <div class="progress"></div>
+  </div>
+  <hr />
+  <!-- New items will get placed here -->
+</div>
+
+<!-- Item Template. This is cloned whenever we want a new one. -->
+<div id="template" class="item">
+  <div class="progress"></div>
+</div>
+
+<script>
+  (function(){
+    var manifest = [
+      "bg.css",
+      "image0.jpg",
+      "image1.jpg",
+      "image2.jpg",
+      "image3.jpg",
+      "Autumn.png",
+      "BlueBird.png",
+      "Nepal.jpg",
+      "Texas.jpg",
+      "alert1.js",
+      "grant.json",
+      "grant.xml",
+      "gbot.svg",
+      "Thunder.mp3|Thunder.ogg"
+    ];
+
+    var galloApp = new Gallo({
+
+    }, function(){
+
+      introLoader = new Gallo.Loader({
+        manifest: manifest,
+        onReset: function(options){
+          // Reset the UI
+          $(".box").remove();
+          $("#mainProgress .progress").width(0);
+          $(".loadButton").attr("disabled", null);
+          $(".reloadButton").attr("disabled", null).css("display", "none");
+          $("#mainProgress .progressText").text("");
+        },
+        onFileStart: function(event){
+          console.log(event.target.item.src + " started");
+        },
+        onLoadStart: function(event){
+          console.log("load started");
+        },
+        onFileProgress: function(event){
+          var options = event.target.options;
+          alert(options);
+          $(options.item).find('.progress').width(options.progress * options.div.width());
+        },
+        onOverallProgress: function(event){
+          var options = event.target.options;
+          $("#mainProgress .progress").width(options.preload.progress * $("#mainProgress").width());
+          $("#mainProgress .progressText").text(Math.round(options.preload.progress * 100) + "%")
+        },
+        onFileError: function(event){
+          var options = event.target.options;
+          options.item.addClass("error");
+        },
+        onFileLoaded: function(event){
+          var div, img, ir, r;
+          var options = event.target.options;
+        },
+        onComplete: function(event){
+          console.log("load complete");
+        },
+        onManifestLoaded: function(event){
+          $(".loadButton").attr("disabled", "disabled");
+          $(".reloadButton").attr("disabled", null).css("display", "inline");
+        }
+      });
+
+      $("#loadAnotherBtn").on('click', function(e) {
+        introLoader.loadAnother();
+      });
+
+      $("#loadSeveralBtn").on('click', function(e) {
+        introLoader.loadSeveral(3);
+      });
+
+      $("#loadAllBtn").on('click', function(e) {
+        introLoader.loadAll();
+      });
+
+      $("#reloadBtn").on('click', function(e) {
+        introLoader.reset();
+      });
+
+      $("#lazyLoad").on('click', function(e) {
+        if(introLoader.lazyLoad().isOn() === true){
+          introLoader.lazyLoad().off();
+        }
+        else {
+          introLoader.lazyLoad().on();
+        }
+      });
+    });
+  })();
+</script>
