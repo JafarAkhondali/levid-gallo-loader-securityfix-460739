@@ -63,7 +63,7 @@
         },
         onFileProgress: function(event){
           var options = event.target.options;
-          $(options.item).find('.progress').width(options.progress * options.div.width());
+          options.item.children("div").width(options.progress * options.div.width());
         },
         onOverallProgress: function(event){
           var options = event.target.options;
