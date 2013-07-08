@@ -68,9 +68,10 @@
     // load all of the dependencies asynchronously. See: https://github.com/ded/script.js
     $script('lib/jquery/jquery-1.9.1.min.js', 'jquery')
     $script('lib/angular/angular.js', 'angular')
+    $script('js/gallo.js', 'gallo')
 
     // wait for multiple depdendencies!
-    $script.ready(['jquery', 'angular'], function () {
+    $script.ready(['jquery', 'angular', 'gallo'], function () {
       $script([
         'lib/jquery.lazyload.min.js',
         'lib/preloadjs/preloadjs-0.3.1.min.js',
@@ -80,7 +81,6 @@
         'js/controllers.js',
         'js/filters.js',
         'js/directives.js',
-        'js/gallo.js',
         'js/galloEvents.js',
         'js/galloLoader.js'
       ], function() {
