@@ -63,7 +63,7 @@
         },
         onFileProgress: function(event){
           var options = event.target.options;
-          options.item.children("div").width(options.progress * options.div.width());
+          options.item.children("div").width(options.progress * options.item.width());
         },
         onOverallProgress: function(event){
           var options = event.target.options;
