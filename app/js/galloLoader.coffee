@@ -153,7 +153,7 @@ class Loader extends Gallo
     switch event.item.type
       when createjs.LoadQueue.CSS
         (document.head or document.getElementsByTagName("head")[0]).appendChild result
-        div.html "<label>CSS Loaded</label>"
+        div.append "<label>CSS Loaded</label>"
 
       when createjs.LoadQueue.IMAGE
         div.text ""
@@ -171,17 +171,17 @@ class Loader extends Gallo
       when createjs.LoadQueue.JAVASCRIPT
         document.body.appendChild result
         div.addClass("complete")
-        div.html "<label>JavaScript Loaded</label>"
+        div.append "<label>JavaScript Loaded</label>"
 
       when createjs.LoadQueue.JSON, createjs.LoadQueue.JSONP
         console.log result
         div.addClass("complete")
-        div.html "<label>JSON loaded</label>"
+        div.append "<label>JSON loaded</label>"
 
       when createjs.LoadQueue.XML
         console.log result
         div.addClass("complete")
-        div.html "<label>XML loaded</label>"
+        div.append "<label>XML loaded</label>"
 
       when createjs.LoadQueue.SOUND
         $(event.item).addClass("complete")

@@ -193,7 +193,7 @@
       switch (event.item.type) {
         case createjs.LoadQueue.CSS:
           (document.head || document.getElementsByTagName("head")[0]).appendChild(result);
-          div.html("<label>CSS Loaded</label>");
+          div.append("<label>CSS Loaded</label>");
           break;
         case createjs.LoadQueue.IMAGE:
           div.text("");
@@ -212,18 +212,18 @@
         case createjs.LoadQueue.JAVASCRIPT:
           document.body.appendChild(result);
           div.addClass("complete");
-          div.html("<label>JavaScript Loaded</label>");
+          div.append("<label>JavaScript Loaded</label>");
           break;
         case createjs.LoadQueue.JSON:
         case createjs.LoadQueue.JSONP:
           console.log(result);
           div.addClass("complete");
-          div.html("<label>JSON loaded</label>");
+          div.append("<label>JSON loaded</label>");
           break;
         case createjs.LoadQueue.XML:
           console.log(result);
           div.addClass("complete");
-          div.html("<label>XML loaded</label>");
+          div.append("<label>XML loaded</label>");
           break;
         case createjs.LoadQueue.SOUND:
           $(event.item).addClass("complete");
