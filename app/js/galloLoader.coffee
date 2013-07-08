@@ -156,7 +156,6 @@ class Loader extends Gallo
         div.append "<label>CSS Loaded</label>"
 
       when createjs.LoadQueue.IMAGE
-        div.text ""
         div.addClass("complete")
         r = result.width / result.height
         ir = @w / @h

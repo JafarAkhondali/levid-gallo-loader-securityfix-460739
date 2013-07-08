@@ -196,7 +196,6 @@
           div.append("<label>CSS Loaded</label>");
           break;
         case createjs.LoadQueue.IMAGE:
-          div.text("");
           div.addClass("complete");
           r = result.width / result.height;
           ir = this.w / this.h;
