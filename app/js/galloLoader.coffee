@@ -99,7 +99,7 @@ class Loader extends Gallo
 
     # Create a new loader display item
     div = $("#template").clone()
-    if @lazyLoad().isOn() is true
+    if @lazyLoad().isOn() is true and @getImageType(item) is 'image'
       img = $("<img />")
       img.addClass "lazy"
       img.attr "src", "assets/grey.jpg"

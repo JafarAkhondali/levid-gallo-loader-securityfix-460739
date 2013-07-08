@@ -109,7 +109,7 @@
         Gallo.Events.dispatchEvent('manifestLoaded', event);
       }
       div = $("#template").clone();
-      if (this.lazyLoad().isOn() === true) {
+      if (this.lazyLoad().isOn() === true && this.getImageType(item) === 'image') {
         img = $("<img />");
         img.addClass("lazy");
         img.attr("src", "assets/grey.jpg");
